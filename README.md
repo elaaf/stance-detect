@@ -19,10 +19,7 @@ Given a Twitter dataset containing Tweets regarding a divisive/controversial top
 The low dimensional clusters can be visualized to see nicely separated user clusters, which then can be assigned "Stance" labels based on their orignal descriptors/features.
 
 
-## Requirements
-
-
-## Installation
+## How To Run This Code
 
 
 
