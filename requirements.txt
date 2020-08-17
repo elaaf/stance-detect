@@ -1,0 +1,7 @@
+certifi==2020.6.20
+mkl-fft==1.1.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+numpy @ file:///opt/concourse/worker/volumes/live/c646f6b9-b398-438d-7dc7-c7142e0ba44b/volume/numpy_and_numpy_base_1596235504536/work
+six==1.15.0
+tqdm @ file:///tmp/build/80754af9/tqdm_1596810128862/work
