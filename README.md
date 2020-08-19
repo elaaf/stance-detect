@@ -3,7 +3,7 @@
 A python implementation of the paper "Unsupervised User Stance Detection on Twitter" by Darwish et al. [arxiv](https://arxiv.org/abs/1904.02000).
 This unofficial repo simply consolidates the code used in the paper for detecting the stance of prolific Twitter users with respect to controversial topics.
 
-## Basic Approach
+## Approach
 
 Given a Twitter dataset containing Tweets regarding a divisive/controversial topic
 
@@ -39,7 +39,7 @@ Set parameters in stance_detect.py
 For Standard Twitter API Dataset CSV, simply run.
 
 ```
-python stance_detect\stance_detect.py
+python stance_detect/stance_detect.py
 ```
 
 
@@ -63,6 +63,8 @@ load_dataset(dataset_path="./datasets/twitter_dataset.csv",
 Feature Extraction
 ```python
 from feature_extraction.feat_extract import FeatureExtraction
+
+FEATURES_TO_USE = ["T","R","H"]
 
 ft_extract = FeatureExtraction()
 user_feature_dict = ft_extract.get_user_feature_vectors(
@@ -105,8 +107,10 @@ scatter_plot_3d(user_feature_label_dict,
                 plot_save_path="./stance_detect/results/3d_scatter_plot.html")
 ```
 
+## 3D Scatter Plot
 
-
+<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" 
+src="https://elaaf.github.io/stance-detect/3d_scatter_plot" height="525" width="100%"></iframe>
 
 
 ## References

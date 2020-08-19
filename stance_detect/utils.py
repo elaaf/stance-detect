@@ -1,5 +1,6 @@
 # Imports
-import os
+import os 
+
 from tqdm import tqdm
 from random import sample
 
@@ -69,6 +70,10 @@ def str2list(string):
 
 # Get a unique file name
 def unique_filename(save_path, extra_info):
+    # Check if path exists, otherwise make directory
+    if not os.path.exists(os.path.dirname(save_path)):
+        os.makedirs(os.path.dirname(save_path))
+    
     filename, extension = os.path.splitext(save_path)
     filename, extension = str(filename), str(extension)
 
@@ -81,3 +86,15 @@ def unique_filename(save_path, extra_info):
         counter += 1
 
     return save_path
+
+
+
+def embed_plot_in_md(plot_url, md_file_path):
+    # Get iframe from hosted plot url
+    iframe = """<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src=plot_url height="525" width="100%"></iframe>"""
+
+    
+    # Add iframe to the md file
+    # TO BE ADDED
+    
+    return

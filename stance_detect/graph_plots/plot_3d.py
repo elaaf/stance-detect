@@ -29,6 +29,7 @@ def scatter_plot_3d(input_data,marker_size=6 ,title="", plot_save_path=""):
         extra_info = INFO.LOAD_PARAMS_USED+INFO.DIM_RED_USED+INFO.CLUSTERING_USED
         plot_save_path = unique_filename (plot_save_path, extra_info) 
         fig.write_html(plot_save_path)
+        
     fig.show()
     
     return
