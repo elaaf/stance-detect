@@ -109,8 +109,8 @@ scatter_plot_3d(user_feature_label_dict,
 
 ## 3D Scatter Plot
 
-<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" 
-src="https://elaaf.github.io/stance-detect/3d_scatter_plot" height="525" width="100%"></iframe>
+[![3D Scatter Plot](/images/3d_scatter_plot.png "3D Scatter Plot, Click to view Interactive !")](https://elaaf.github.io/stance-detect/3d_scatter_plot.html)
+
 
 
 ## References
