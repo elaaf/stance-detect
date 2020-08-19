@@ -1,7 +1,7 @@
 # CONSTANTS IMPORTED INTO OTHER FILES
 
 # leave tqdm bar after completion
-LEAVE_BAR = True
+LEAVE_BAR = False
 
 # DIM REDUCTION and CLUSTERING used
 class INFO_USED():

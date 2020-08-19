@@ -22,11 +22,8 @@ def get_umap_embedding(input_data, n_neighbors=15, n_components=3, min_distance=
         low_dim_user_data (dict) : Dictionary of (user: low_dim_feature_vector)
     """
     INFO.DIM_RED_USED = f" UMAP(n_neigh {n_neighbors}, min_dist {min_distance})"
+    print("\n"+INFO.DIM_RED_USED+"\n")
     
-    end="\n"
-    if not LEAVE_BAR:
-        end="\r"
-    print("UMAP dim reduction..", end=end)
     
     dim_reducer = UMAP(n_neighbors=n_neighbors,
                        n_components=n_components,

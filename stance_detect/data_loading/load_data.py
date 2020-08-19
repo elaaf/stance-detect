@@ -59,6 +59,7 @@ def load_dataset(dataset_path="", features=[], num_top_users=None, min_tweets=0,
         dataset (list)          : list of csv rows as dictionaries
     """
     INFO.LOAD_PARAMS_USED = f" #rows {rows_to_read} num_top_users {num_top_users} min_tweets {min_tweets}"
+    print("\n"+INFO.LOAD_PARAMS_USED+"\n")
     
     if not dataset_path:
         raise ValueError("Arguement dataset_path not defined !")

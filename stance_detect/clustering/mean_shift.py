@@ -16,6 +16,8 @@ def mean_shift_clustering(input_data, bandwidth=None):
         (dict): Dictionary of ( user:(feature_vector,label) ) for input_data
     """
     INFO.CLUSTERING_USED = " MeanShift"
+    print("\n"+INFO.CLUSTERING_USED+"\n")
+    
     model = MeanShift(bandwidth=bandwidth)
     
     # converting input_data to list of shape (n_samples, n_features)

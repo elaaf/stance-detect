@@ -16,10 +16,10 @@ if __name__ == "__main__":
     users_list, usernames_list, tweets_list, mentions_list, hashtags_list  =  load_dataset(
                         dataset_path="./datasets/twitter_covid.csv", 
                         features=["user_id", "username", "tweet", "mentions", "hashtags"], 
-                        num_top_users=None,
+                        num_top_users=1000,
                         min_tweets=0,
                         random_sample_size=0, 
-                        rows_to_read=100,
+                        rows_to_read=None,
                         user_col="user_id", 
                         str2list_cols=["mentions", "hashtags"])
 

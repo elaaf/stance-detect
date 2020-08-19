@@ -19,11 +19,92 @@ Given a Twitter dataset containing Tweets regarding a divisive/controversial top
 The low dimensional clusters can be visualized to see nicely separated user clusters, which then can be assigned "Stance" labels based on their orignal descriptors/features.
 
 
+
+## Requirements
+To be added.
+
+
+
+
 ## How To Run This Code
 
+Clone this repo.
+```
+git clone https://github.com/elaaf/stance-detect.git
+```
 
 
-## Usage
+Place your Twitter Dataset CSV in ./datasets/ folder.
+Set parameters in stance_detect.py
+For Standard Twitter API Dataset CSV, simply run.
+
+```
+python stance_detect\stance_detect.py
+```
+
+
+#### API USAGE
+
+Data Loading
+```python
+from data_loading.load_data import load_dataset
+
+load_dataset(dataset_path="./datasets/twitter_dataset.csv",
+             features=["user_id", "username", "tweet", "mentions", "hashtags"], 
+             num_top_users=1000,
+             min_tweets=0,
+             random_sample_size=0, 
+             rows_to_read=None, 
+             user_col="user_id", 
+             str2list_cols=["mentions", "hashtags"])
+```
+
+
+Feature Extraction
+```python
+from feature_extraction.feat_extract import FeatureExtraction
+
+ft_extract = FeatureExtraction()
+user_feature_dict = ft_extract.get_user_feature_vectors(
+                                FEATURES_TO_USE,
+                                users_list,
+                                tweets_list, 
+                                mentions_list, 
+                                hashtags_list,
+                                feature_size=None,
+                                relative_freq=True)
+```
+
+Dimensionality Reduction
+```python
+from dimensionality_reduction.umap import get_umap_embedding
+
+low_dim_user_feature_dict = get_umap_embedding(
+                                user_feature_dict,
+                                n_neighbors=20,
+                                n_components=3,
+                                min_distance=0.1,
+                                distance_metric="correlation")
+```
+
+
+Clustering
+```python
+from clustering.mean_shift import mean_shift_clustering
+
+user_feature_label_dict = mean_shift_clustering( low_dim_user_feature_dict )
+
+```
+
+Interactive Scatter Plot
+```python
+from graph_plots.plot_3d import scatter_plot_3d
+
+scatter_plot_3d(user_feature_label_dict, 
+                title="Twitter Users Scatter Plot",
+                plot_save_path="./stance_detect/results/3d_scatter_plot.html")
+```
+
 
 
 
