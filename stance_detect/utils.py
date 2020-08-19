@@ -1,4 +1,5 @@
 # Imports
+import os
 from tqdm import tqdm
 from random import sample
 
@@ -24,7 +25,7 @@ def get_tweet_counts(list_of_tweets, fuzzy_matching=False, fuzzy_matching_thresh
     if not fuzzy_matching:
         unique_tweets = set(list_of_tweets)
         tweet_counts = [(tweet,list_of_tweets.count(tweet)) 
-                        for tweet in tqdm(unique_tweets, desc="finding couts", leave=LEAVE_BAR]
+                        for tweet in tqdm(unique_tweets, desc="finding couts", leave=LEAVE_BAR)]
         tweet_counts =  sorted(tweet_counts, key=lambda item: item[1], reverse=True)
 
     if fuzzy_matching:
@@ -66,3 +67,17 @@ def str2list(string):
     return output
 
 
+# Get a unique file name
+def unique_filename(save_path, extra_info):
+    filename, extension = os.path.splitext(save_path)
+    filename, extension = str(filename), str(extension)
+
+    filename += extra_info
+    save_path = filename+extension
+    
+    counter = 1
+    while os.path.exists(save_path):
+        save_path = filename+" ("+str(counter)+")"+extension
+        counter += 1
+
+    return save_path

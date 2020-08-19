@@ -2,6 +2,9 @@ import numpy as np
 
 from sklearn.cluster import MeanShift
 
+# Local
+from constants import *
+
 def mean_shift_clustering(input_data, bandwidth=None):
     """Get the Mean Shift clustered labels of input_data.
 
@@ -12,7 +15,7 @@ def mean_shift_clustering(input_data, bandwidth=None):
     Returns:
         (dict): Dictionary of ( user:(feature_vector,label) ) for input_data
     """
-    
+    INFO.CLUSTERING_USED = " MeanShift"
     model = MeanShift(bandwidth=bandwidth)
     
     # converting input_data to list of shape (n_samples, n_features)

@@ -4,6 +4,9 @@ import numpy as np
 
 from umap import UMAP
 
+# Locals
+from constants import *
+
 
 def get_umap_embedding(input_data, n_neighbors=15, n_components=3, min_distance=0.1, distance_metric='correlation'):
     """Get the low dimensional UMAP embedding of input_data (num_samples, num_features).
@@ -18,6 +21,13 @@ def get_umap_embedding(input_data, n_neighbors=15, n_components=3, min_distance=
     Returns:
         low_dim_user_data (dict) : Dictionary of (user: low_dim_feature_vector)
     """
+    INFO.DIM_RED_USED = f" UMAP(n_neigh {n_neighbors}, min_dist {min_distance})"
+    
+    end="\n"
+    if not LEAVE_BAR:
+        end="\r"
+    print("UMAP dim reduction..", end=end)
+    
     dim_reducer = UMAP(n_neighbors=n_neighbors,
                        n_components=n_components,
                        min_dist=min_distance,

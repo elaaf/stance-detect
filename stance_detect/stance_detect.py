@@ -16,10 +16,10 @@ if __name__ == "__main__":
     users_list, usernames_list, tweets_list, mentions_list, hashtags_list  =  load_dataset(
                         dataset_path="./datasets/twitter_covid.csv", 
                         features=["user_id", "username", "tweet", "mentions", "hashtags"], 
-                        num_top_users=1000,
-                        min_tweets=10,
+                        num_top_users=None,
+                        min_tweets=0,
                         random_sample_size=0, 
-                        rows_to_read=None,
+                        rows_to_read=100,
                         user_col="user_id", 
                         str2list_cols=["mentions", "hashtags"])
 
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     ##### DIMENSIONALITY REDUCTION #####
     low_dim_user_feature_dict = get_umap_embedding(
                                     user_feature_dict,
-                                    n_neighbors=15,
+                                    n_neighbors=20,
                                     n_components=3,
                                     min_distance=0.1,
                                     distance_metric="correlation")
@@ -61,4 +61,5 @@ if __name__ == "__main__":
     
     ##### PLOTTING #####
     scatter_plot_3d(user_feature_label_dict, 
-                    plot_save_path="./stance_detect/results/3d_sactter_plot.html")
+                    title="Twitter Users Scatter Plot",
+                    plot_save_path="./stance_detect/results/3d_scatter_plot.html")
