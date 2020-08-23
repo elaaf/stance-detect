@@ -13,18 +13,18 @@ from utils import sorted_count, str2list
 
 # Filter Dataset for top users with tweets>min_tweets
 def filter_users(users_list, num_top_users, min_tweets):
-    """Returns filtered dataset for users top users with tweets
-       greater than or equal to min_tweets.
+    """Returns filtered dataset for users top users with tweets greater than or equal to min_tweets.
 
     Args:
-    
-        users_list (list)    : List of users to filter.
-        num_top_users (int)      : Number of top users to cluster
-        min_tweets (int)     : Min number of tweets to consider a user 
-                               "active/engaged"
+        users_list (list): 
+            List of users to filter.
+        num_top_users (int) : 
+            Number of top users to cluster.
+        min_tweets (int) : 
+            Min number of tweets to consider a user "active/engaged".
     
     Returns:
-        users_to_keep (list) : list of users to keep.
+        (list) : list of users to keep.
     """
     # Get sorted user counts
     users_to_keep = sorted_count(users_list)
@@ -44,19 +44,23 @@ def load_dataset(dataset_path="", features=[], num_top_users=None, min_tweets=0,
     """Returns the csv twitter dataset, number of outputs same as features with order maintained.
     
     Args:
-        dataset_path (str)      : Path to the dataset csv file
-        features (list)         : List of feature/columns names to return,
-                                  if empty, returns all columns.
-        num_top_users (int)         : number of top users to return.
-        min_tweets (int)        : Criteria to filter users, with tweets>=min_tweets.
-        random_sample_size (int): Number of random samples to select from the dataset
-                                  must be less than the total dataset size.
-        user_col (string)       : users column name. MUST BE SPECIFIED FOR FILTERING.
-        str2list_cols (list)    : list of column names that have lists but read as strings.
-                                  converted back to lists using str2list.
-                                  
+        dataset_path (str) : 
+            Path to the dataset csv file.
+        features (list) : 
+            List of feature/columns names to return, if empty, returns all columns.
+        num_top_users (int) : 
+            Number of top users to return.
+        min_tweets (int) : 
+            Criteria to filter users, with tweets>=min_tweets.
+        random_sample_size (int): 
+            Random samples to get from the dataset, must be less than the total dataset size.
+        user_col (string) : 
+            User Identification Column Name. MUST BE SPECIFIED.
+        str2list_cols (list) : 
+            Column names with list values read as string, converted back to lists using str2list.
+    
     Returns:
-        dataset (list)          : list of csv rows as dictionaries
+        (list) : csv rows as dictionaries.
     """
     INFO.LOAD_PARAMS_USED = f" #rows {rows_to_read} num_top_users {num_top_users} min_tweets {min_tweets}"
     print("\n"+INFO.LOAD_PARAMS_USED+"\n")

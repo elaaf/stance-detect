@@ -8,20 +8,26 @@ from constants import *
 
 ## HELPER FUNCTIONS
 
-# IMPLEMENT FUZZY STRING MATCHING
 def get_tweet_counts(list_of_tweets, fuzzy_matching=False, fuzzy_matching_threshold=0.7):
     """Returns a list containing tuple((tweet): count), sorted by count in descending order.
     The first element (tweet) is a tuple, and may aggregate multiple tweets
     as one, based on the tweet_similarity function.
+    
     Args:
-        list_of_tweets (list)           : list of strings, where each string is a tweet.
-        fuzzy_matching (bool)           : To find similar tweets using fuzzy string matching.
+        list_of_tweets (list): 
+            list of strings, where each string is a tweet.
+        fuzzy_matching (bool): 
+            To find similar tweets using fuzzy string matching.
                                           Default: False.
-        fuzzy_matching_threshold (int)  : Similarity threshold for fuzzy string matching over 
-                                          which to consider two tweets similar.
-                                          Default: 0.7.
+        fuzzy_matching_threshold (int): 
+            Similarity threshold for fuzzy string matching over 
+            which to consider two tweets similar. Defaults to 0.7.
+    
     Returns:
-        tweet_counts (list)             : List containing ((tweet/s), count).
+        (list): list of ((tweet/s), count).
+    
+    TODO:
+        Add fuzzy string matching for tweets.
     """
     if not fuzzy_matching:
         unique_tweets = set(list_of_tweets)
@@ -51,10 +57,12 @@ def sorted_count(array, reverse=True):
 # String to List
 def str2list(string):
     """Returns list contained in a string.
+    
     Args:
-        string (str)        : A string containing a list
+        string (str): A string containing a list.
+    
     Returns:
-        output (list)      : list of infered from the string
+        (list): inferred list from the string.
     """
     # Removing brackets "[" "]" from the string
     string = string[1:-1]
@@ -70,6 +78,18 @@ def str2list(string):
 
 # Get a unique file name
 def unique_filename(save_path, extra_info):
+    """Generate a new unique enumerated file name, 
+       based on existing files.
+
+    Args:
+        save_path (str): 
+            file path. Makes directory if does not exist.
+        extra_info (str): 
+            Text to append before file extension.
+
+    Returns:
+        (str): An enumerated file path.
+    """
     # Check if path exists, otherwise make directory
     if not os.path.exists(os.path.dirname(save_path)):
         os.makedirs(os.path.dirname(save_path))
@@ -86,15 +106,3 @@ def unique_filename(save_path, extra_info):
         counter += 1
 
     return save_path
-
-
-
-def embed_plot_in_md(plot_url, md_file_path):
-    # Get iframe from hosted plot url
-    iframe = """<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src=plot_url height="525" width="100%"></iframe>"""
-
-    
-    # Add iframe to the md file
-    # TO BE ADDED
-    
-    return

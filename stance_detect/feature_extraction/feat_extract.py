@@ -30,22 +30,26 @@ class FeatureExtraction():
         feature_vector are concatenated features provided in features_to_use.
 
         Args:
-            features_to_use (list)          : list of features to use e.g. ["T","R","H"]  
-                                              T : tweets feature vectors
-                                              R : mentions OR retweets feature vectors
-                                              H : hashtags feature vector
-                                              Feature vectors will be concatenated in order. 
-            users_list (list)               : list of users
-            feature_vectors_to_use (*args)  : positional arguments as list of feature_vectors in 
-                                              same order as features_to_use ["T","R","H"].
-            feature_size (int)              : Length of the hashtags feature vector
-                                              (Equivalent to selecting top popular hashtags)
-                                              If None - uses all hashtags in the dataset.
-            relative_freq (bool)            : Whether to compute feature vector with relative
-                                              count i.e. divide by total count.
+            features_to_use (list): 
+                list of features to use e.g. ["T","R","H"]  
+                T : tweets feature vectors
+                R : mentions OR retweets feature vectors
+                H : hashtags feature vector
+                Feature vectors are concatenated in order. 
+            users_list (list): 
+                list of users
+            feature_vectors_to_use (*args): 
+                positional arguments as list of feature_vectors in same order 
+                as features_to_use ["T","R","H"].
+            feature_size (int): 
+                Length of the hashtags feature vector (Equivalent to selecting top popular hashtags)
+                If None - uses all hashtags in the dataset.
+            relative_freq (bool): 
+                Whether to compute feature vector with relative 
+                count i.e. divide by total count.
                                               
         Returns:
-            user_feature_vectors_dict (dict): Dictionary of (user:feature_vector)
+            (dict): Dictionary of (user:feature_vector).
         """
         features_dict = {}
         for i,feature in enumerate(features_to_use):
@@ -76,17 +80,20 @@ class FeatureExtraction():
         """Returns a list of dictionary, with hashtag features for each user.
         
         Args:
-            users_list (list)           : List of all users in the dataset (Non-Unique).
-            hashtags_list (list)        : List of list of all hashtags shared.
-            feature_size (int)          : Length of the hashtags feature vector
-                                          (Equivalent to selecting top popular hashtags)
-                                          If None - uses all hashtags in the dataset.
-            relative_freq (bool)        : Whether to compute feature vector with relative
-                                          count i.e. divide by total count.
+            users_list (list): 
+                List of all users in the dataset (Non-Unique).
+            hashtags_list (list): 
+                List of list of all hashtags shared.
+            feature_size (int): 
+                Length of the hashtags feature vector (Equivalent to selecting top popular hashtags). 
+                If None - uses all hashtags in the dataset.
+            relative_freq (bool): 
+                Whether to compute feature vector with relative 
+                count i.e. divide by total count.
                                           
         Returns:
-            hashtag_features (dict)     : Dictionary, with user_col as key and
-                                           hashtag feature vector as value.
+            (dict): Dictionary of (user:hashtag_feature_vector).
+
         """
         # get the counts of each hashtag shared
         # Collapse the list of lists: hashtags_list
@@ -114,17 +121,18 @@ class FeatureExtraction():
         """Returns a list of dictionary, with mentions features for each user.
         
         Args:
-            users_list (list)           : List of all users in the dataset (Non-Unique).
-            mentions_list (list)        : List of list of all mentions shared.
-            feature_size (int)          : Length of the mentions feature vector
-                                          (Equivalent to selecting top popular mentions)
-                                          If None - uses all mentions in the dataset.
-            relative_freq (bool)        : Whether to compute feature vector with relative
-                                          count i.e. divide by total count.
+            users_list (list): 
+                List of all users in the dataset (Non-Unique).
+            mentions_list (list): 
+                List of list of all mentions shared.
+            feature_size (int): 
+                Length of the mentions feature vector (Equivalent to selecting top popular mentions). 
+                If None - uses all mentions in the dataset.
+            relative_freq (bool): 
+                Whether to compute feature vector with relative count i.e. divide by total count.
                                           
         Returns:
-            mention_features (dict)     : Dictionary, with user_col as key and
-                                           mention feature vector as value.
+            (dict): Dictionary of (user:mentions_feature_vector).
         """
         # Collapsing mentions of users into a single list
         all_mentions = [x for m in mentions_list for x in m if x]
@@ -149,17 +157,18 @@ class FeatureExtraction():
         """Returns a list of dictionary, with tweets features for each user.
         
         Args:
-            users_list (list)           : List of all users in the dataset (Non-Unique).
-            tweets_list (list)          : List of list of all tweets shared.
-            feature_size (int)          : Length of the tweets feature vector
-                                          (Equivalent to selecting top popular tweets)
-                                          If None - uses all tweets in the dataset.
-            relative_freq (bool)        : Whether to compute feature vector with relative
-                                          count i.e. divide by total count.
+            users_list (list): 
+                List of all users in the dataset (Non-Unique).
+            tweets_list (list): 
+                List of list of all tweets shared.
+            feature_size (int): 
+                Length of the tweets feature vector (Equivalent to selecting top popular tweets). 
+                If None, uses all tweets in the dataset.
+            relative_freq (bool): 
+                Whether to compute feature vector with relative count i.e. divide by total count.
                                           
         Returns:
-            tweet_features (dict)       : Dictionary, with user_col as key and
-                                           tweet feature vector as value.
+            (dict): Dictionary of (user:mentions_feature_vector).
         """
         # Get tweet counts, sorted by count in descending order
         tweet_counts = get_tweet_counts(tweets_list, fuzzy_matching=False)

@@ -1,12 +1,11 @@
-# Fix Pathing Issue
+# Verify users from all feature vectors are the same for a given subset of data read
 
 import sys
-import unittest
-
-from itertools import permutations
+sys.path.append("..")
 
 import random
-sys.path.append("..")
+import unittest
+from itertools import permutations
 
 # Local Imports
 from stance_detect.data_loading.load_data import read_dataset
@@ -14,8 +13,6 @@ from stance_detect.feature_extraction.feat_extract import FeatureExtraction
 
 
 # Unit Test
-# Verify users from all feature vectors are the same for a given subset of data read
-
 class TestUsersInFeatureVectors(unittest.TestCase):
     def setUp(self):
         self.num_users = random.randint(100,1000)
@@ -45,23 +42,3 @@ class TestUsersInFeatureVectors(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-
-
-
-# class TestListElements(unittest.TestCase):
-#     def setUp(self):
-#         self.expected = ['foo', 'bar', 'baz']
-#         self.result = ['baz', 'foo', 'bar']
-
-#     def test_count_eq(self):
-#         """Will succeed"""
-#         self.assertCountEqual(self.result, self.expected)
-
-#     def test_list_eq(self):
-#         """Will fail"""
-#         self.assertListEqual(self.result, self.expected)
-
-# if __name__ == "__main__":
-#     unittest.main()

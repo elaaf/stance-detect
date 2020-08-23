@@ -9,11 +9,13 @@ def mean_shift_clustering(input_data, bandwidth=None):
     """Get the Mean Shift clustered labels of input_data.
 
     Args:
-        input_data (dict): Dictionary of (user:feature_vector) to be clusterd.
-        bandwidth (int, optional): RBF kernel bandwidth. Defaults to None.
+        input_data (dict): 
+            Dictionary of (user:feature_vector) to be clusterd.
+        bandwidth (int, optional): 
+            RBF kernel bandwidth. Defaults to None.
 
     Returns:
-        (dict): Dictionary of ( user:(feature_vector,label) ) for input_data
+        (dict): Dictionary of ( user:(feature_vector,label) ).
     """
     INFO.CLUSTERING_USED = " MeanShift"
     print("\n"+INFO.CLUSTERING_USED+"\n")

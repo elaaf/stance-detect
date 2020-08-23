@@ -6,7 +6,19 @@ from utils import unique_filename
 from constants import *
 
 
-def scatter_plot_3d(input_data,marker_size=6 ,title="", plot_save_path=""):    
+def scatter_plot_3d(input_data,marker_size=6 ,title="", plot_save_path=""):
+    """Generate and open an interactive 3D scatter plot as html.
+
+    Args:
+        input_data (dict): Dictionary of (user: feature_vector).
+        marker_size (int, optional): Point size in plot. Defaults to 6.
+        title (str, optional): Title of the plot. Defaults to "".
+        plot_save_path (str, optional): Save path for plot html file. Defaults to "".
+    
+    TODO:
+        Add marker labels.
+    """
+    
     # Get data to plot from input_data dict
     feature_vectors, labels = zip(*list(input_data.values()))
     x,y,z = zip(* [tuple(x) for x in feature_vectors] )

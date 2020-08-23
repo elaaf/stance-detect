@@ -7,7 +7,6 @@ from dimensionality_reduction.umap import get_umap_embedding
 from clustering.mean_shift import mean_shift_clustering
 from graph_plots.plot_3d import scatter_plot_3d
 
-from utils import embed_plot_in_md
 
 if __name__ == "__main__":
 
@@ -63,8 +62,3 @@ if __name__ == "__main__":
     scatter_plot_3d(user_feature_label_dict, 
                     title="Twitter Users Scatter Plot",
                     plot_save_path="./stance_detect/results/3d_scatter_plot.html")
-    
-    
-    # HMTL to iframe
-    embed_plot_in_md(plot_url="https://elaaf.github.io/stance-detect/",
-                     md_file_path="")

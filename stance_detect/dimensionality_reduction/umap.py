@@ -12,14 +12,19 @@ def get_umap_embedding(input_data, n_neighbors=15, n_components=3, min_distance=
     """Get the low dimensional UMAP embedding of input_data (num_samples, num_features).
 
     Args:
-        input_data (dict): Dictionary of (user: feature_vector)
-        n_neighbors (int, optional): UMAP parameter. Defaults to 15.
-        n_components (int, optional): Lower Dimension components.
-        min_distance (float, optional): UMAP parameter. Defaults to 0.1.
-        distance_metric (str, optional): UMAP parameter. Defaults to 'correlation'.
+        input_data (dict): 
+            Dictionary of (user: feature_vector).
+        n_neighbors (int, optional): 
+            UMAP parameter. Defaults to 15.
+        n_components (int, optional): 
+            Lower Dimension components.
+        min_distance (float, optional): 
+            UMAP parameter. Defaults to 0.1.
+        distance_metric (str, optional): 
+            UMAP parameter. Defaults to 'correlation'.
 
     Returns:
-        low_dim_user_data (dict) : Dictionary of (user: low_dim_feature_vector)
+        (dict) : Dictionary of (user: low_dim_feature_vector).
     """
     INFO.DIM_RED_USED = f" UMAP(n_neigh {n_neighbors}, min_dist {min_distance})"
     print("\n"+INFO.DIM_RED_USED+"\n")
