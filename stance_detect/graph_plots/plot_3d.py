@@ -3,7 +3,7 @@
 from plotly import graph_objects as go
 
 from utils import unique_filename
-from constants import *
+from constants import INFO
 
 
 def scatter_plot_3d(input_data,marker_size=6 ,title="", plot_save_path=""):

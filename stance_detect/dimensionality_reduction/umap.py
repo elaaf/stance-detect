@@ -5,7 +5,7 @@ import numpy as np
 from umap import UMAP
 
 # Locals
-from constants import *
+from constants import INFO
 
 
 def get_umap_embedding(input_data, n_neighbors=15, n_components=3, min_distance=0.1, distance_metric='correlation'):
