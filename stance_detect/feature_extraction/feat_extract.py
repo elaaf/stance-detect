@@ -4,6 +4,7 @@ sys.path.append("..")
 import numpy as np
 
 from tqdm import tqdm
+from collections import Counter
 
 # Local Imports
 from constants import *
@@ -189,3 +190,15 @@ class FeatureExtraction():
                 tweet_features[user] = tweet_features[user]/np.sum(tweet_features[user])
         
         return tweet_features
+    
+    
+    def get_user_info_labels(self, users_list, user_info_list, top_n=5):
+        
+        # Build user_info dict
+        user_info_label_dict = {}
+        user_info_zip = list(zip(users_list, user_info_list))
+        for user in set(users_list):
+            user_label_candidates = [x for u,item in user_info_zip for x in item if u==user]
+            user_info_label_dict[user] = [a for a,b in Counter(user_label_candidates).most_common(top_n)]
+            
+        return user_info_label_dict

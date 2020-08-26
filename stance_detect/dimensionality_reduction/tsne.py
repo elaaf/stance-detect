@@ -34,6 +34,9 @@ def get_tsne_embedding(input_data, n_components=3, perplexity=30, early_exaggera
     Returns:
         (dict): Dictionary of (user: low_dim_featuer_vector)
     """
+    INFO.DIM_RED_USED = f" t-SNE(perplexity {perplexity}, epsilon {early_exaggeration}, learning_rate {learning_rate})"
+    print("\n"+INFO.DIM_RED_USED+"\n")
+    
     dim_reducer = TSNE(n_components=n_components, 
                        perplexity=perplexity, 
                        early_exaggeration=early_exaggeration, 

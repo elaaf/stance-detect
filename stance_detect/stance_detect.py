@@ -4,6 +4,7 @@ from constants import *
 from data_loading.load_data import load_dataset
 from feature_extraction.feat_extract import FeatureExtraction
 from dimensionality_reduction.umap import get_umap_embedding
+from dimensionality_reduction.tsne import get_tsne_embedding
 from clustering.mean_shift import mean_shift_clustering
 from graph_plots.plot_3d import scatter_plot_3d
 
@@ -15,12 +16,13 @@ if __name__ == "__main__":
     users_list, usernames_list, tweets_list, mentions_list, hashtags_list  =  load_dataset(
                         dataset_path="./datasets/twitter_covid.csv", 
                         features=["user_id", "username", "tweet", "mentions", "hashtags"], 
-                        num_top_users=1000,
+                        num_top_users=2000,
                         min_tweets=10,
                         random_sample_size=0, 
-                        rows_to_read=100,
+                        rows_to_read=None,
                         user_col="user_id", 
                         str2list_cols=["mentions", "hashtags"])
+
 
 
     ##### FEATURE EXTRACTION #####
@@ -43,16 +45,29 @@ if __name__ == "__main__":
                             relative_freq=True
                             )
     
-    
+
+    # Get User Information labels
+    user_info_label_dict = ft_extract.get_user_info_labels(
+                                users_list,
+                                user_info_list = hashtags_list,
+                                top_n = 5
+                                )
+
     ##### DIMENSIONALITY REDUCTION #####
     low_dim_user_feature_dict = get_umap_embedding(
                                     user_feature_dict,
-                                    n_neighbors=20,
+                                    n_neighbors=n_neighbors,
                                     n_components=3,
-                                    min_distance=0.1,
+                                    min_distance=min_distance,
                                     distance_metric="correlation")
     
-    
+
+    low_dim_user_feature_dict = get_tsne_embedding(
+                                user_feature_dict,
+                                n_components=3,
+                                perplexity=perplexity, 
+                                early_exaggeration=early_exaggeration)
+
     
     ##### CLUSTERING #####
     user_feature_label_dict = mean_shift_clustering( low_dim_user_feature_dict )
@@ -60,5 +75,7 @@ if __name__ == "__main__":
     
     ##### PLOTTING #####
     scatter_plot_3d(user_feature_label_dict, 
+                    hover_info=list(user_info_label_dict.values()),
                     title="Twitter Users Scatter Plot",
                     plot_save_path="./stance_detect/results/3d_scatter_plot.html")
+    
