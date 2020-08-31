@@ -1,13 +1,11 @@
-import sys
-sys.path.append("..")
+# Feature Extraction Functions
 
 import numpy as np
-
 from tqdm import tqdm
 from collections import Counter
 
 # Local Imports
-from constants import *
+from constants import LEAVE_BAR
 
 from utils import sorted_count, get_tweet_counts
 

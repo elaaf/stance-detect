@@ -1,4 +1,4 @@
-# 3D interactive plots using plotly
+# 3D interactive plots using plotly Python
 
 from plotly import graph_objects as go
 

@@ -21,8 +21,10 @@ The low dimensional clusters can be visualized to see nicely separated user clus
 
 
 ## Requirements
-To be added.
-
+```
+# Create a Python 3.6+ virtual environment and run
+pip install -r requirements.txt
+```
 
 
 
@@ -35,15 +37,15 @@ git clone https://github.com/elaaf/stance-detect.git
 
 
 Place your Twitter Dataset CSV in ./datasets/ folder.
-Set parameters in stance_detect.py
+Set Data Pipeline Parameters in main.py
 For Standard Twitter API Dataset CSV, simply run.
 
 ```
-python stance_detect/stance_detect.py
+python3 stance_detect/main.py
 ```
 
 
-#### API USAGE
+### API USAGE
 
 Data Loading
 ```python
@@ -98,18 +100,33 @@ user_feature_label_dict = mean_shift_clustering( low_dim_user_feature_dict )
 
 ```
 
+Get User Labels for Interactive Plot (Optional)
+```python
+user_info_label_dict = ft_extract.get_user_info_labels(
+                            users_list,
+                            user_info_list = hashtags_list,
+                            top_n = 5)
+
+user_hover_labels = list( user_info_label_dict.values() )
+```
+
 Interactive Scatter Plot
 ```python
 from graph_plots.plot_3d import scatter_plot_3d
 
 scatter_plot_3d(user_feature_label_dict, 
                 title="Twitter Users Scatter Plot",
+                hover_info=user_hover_labels,
                 plot_save_path="./stance_detect/results/3d_scatter_plot.html")
 ```
 
-## 3D Scatter Plot
+## Output 3D Scatter Plot for Twitter Users
+Each datapoint in the scatter plot represents a Twitter User, 
+with their top 5 most used hashtags displayed as hover labels.
 
-[![3D Scatter Plot](/images/3d_scatter_plot.png "3D Scatter Plot, Click to view Interactive !")](https://elaaf.github.io/stance-detect/3d_scatter_plot.html)
+Click to open interactive view !
+
+[![3D Scatter Plot](/images/3d_scatter_plot.gif "3D Scatter Plot, Click to view Interactive !")](https://elaaf.github.io/stance-detect/3d_scatter_plot.html)
 
 
 
@@ -117,4 +134,4 @@ scatter_plot_3d(user_feature_label_dict,
 Darwish, K., Stefanov, P., Aupetit, M., & Nakov, P. (2020). Unsupervised User Stance Detection on Twitter. Proceedings of the International AAAI Conference on Web and Social Media, 14(1), 141-152. Retrieved from https://www.aaai.org/ojs/index.php/ICWSM/article/view/7286
 
 
-# UNDER PROGRESS !
+### UNDER PROGRESS !

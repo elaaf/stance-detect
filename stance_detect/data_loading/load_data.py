@@ -1,11 +1,8 @@
-import sys
-sys.path.append("...")
-
-from csv import DictReader
 from tqdm import tqdm
+from csv import DictReader
 
-# Internal
-from constants import *
+# Internal Imports
+from constants import INFO, LEAVE_BAR
 
 from utils import sorted_count, str2list
 

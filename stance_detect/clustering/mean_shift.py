@@ -1,9 +1,10 @@
 import numpy as np
-
 from sklearn.cluster import MeanShift
 
-# Local
-from constants import *
+# Local Imports
+from constants import INFO
+
+
 
 def mean_shift_clustering(input_data, bandwidth=None):
     """Get the Mean Shift clustered labels of input_data.
