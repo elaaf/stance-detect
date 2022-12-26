@@ -12,5 +12,5 @@ six==1.15.0
 threadpoolctl==2.1.0
 tqdm==4.48.2
 umap-learn==0.4.6
-wheel==0.35.1
+wheel==0.38.1
 wincertstore==0.2
